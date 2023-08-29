@@ -1,0 +1,41 @@
+# Servicio para el backend
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: mi-namespace
+spec:
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+---
+# Servicio para la base de datos
+apiVersion: v1
+kind: Service
+metadata:
+  name: database-service
+  namespace: mi-namespace
+spec:
+  selector:
+    app: database
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
+---
+# Servicio para el frontend
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: mi-namespace
+spec:
+  selector:
+    app: frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

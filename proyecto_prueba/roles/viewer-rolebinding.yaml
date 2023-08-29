@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: viewer-rolebinding
+  namespace: mi-namespace
+subjects:
+  - kind: User
+    name: "nombre-del-usuario" # Reemplaza esto con el nombre del usuario
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: viewer-role
+  apiGroup: rbac.authorization.k8s.io

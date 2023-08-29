@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: mi-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend-container
+          image: backend-image
+          ports:
+            - containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /healthzaplicación
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /readiness
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5

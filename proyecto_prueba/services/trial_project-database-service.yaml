@@ -1,0 +1,27 @@
+# Database Deployment
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: database-deployment
+  namespace: mi-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: database
+  template:
+    metadata:
+      labels:
+        app: database
+      spec:
+      containers:
+        - name: database-container
+          image: database-image
+          volumeMounts:
+            - name: database-storage
+              mountPath: /path/in/container
+      volumes:
+        - name: database-storage
+          persistentVolumeClaim:
+            claimName: database-pvc

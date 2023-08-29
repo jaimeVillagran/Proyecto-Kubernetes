@@ -1,0 +1,19 @@
+# trial_project-configmaps.yaml
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: mi-namespace
+data:
+  API_URL: "https://api.miaplicacion.com"
+  LOG_LEVEL: "verbose"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-config
+  namespace: mi-namespace
+data:
+  API_URL: "https://api.miaplicacion.com"
+  APP_TITLE: "Mi Aplicación"

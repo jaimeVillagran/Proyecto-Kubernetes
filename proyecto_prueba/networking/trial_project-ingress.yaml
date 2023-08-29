@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: trial-project-ingress
+  namespace: mi-namespace
+spec:
+  ingressClassName: nginx # Aquí es donde especificas el nombre de la clase de Ingress
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-service
+                port:
+                  number: 80
